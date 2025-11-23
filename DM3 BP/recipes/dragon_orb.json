@@ -1,0 +1,26 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "dmss:dragon_orb"
+		},
+		"tags": ["altar"],
+		"pattern": [
+			" O ",
+			"OPO",
+			" O "
+		],
+		"key": {
+			"O": {
+				"item": "minecraft:crying_obsidian"
+			},
+			"P": {
+				"item": "minecraft:ender_pearl"
+			}
+		},
+		"result": {
+			"item": "dmss:dragon_orb"
+		},
+    	"unlock":{"context": "AlwaysUnlocked"}
+	}
+}
