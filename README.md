@@ -3,7 +3,7 @@
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/1328825?logo=Curseforge&label=CurseForge&labelColor=Gray)](https://www.curseforge.com/minecraft-bedrock/addons/dragon-mounts-v1-3-25)
 [![Discord](https://img.shields.io/discord/1293105990476103720?logo=Discord&logoColor=white&label=Discord&labelColor=%235865F2)](https://discord.gg/Ewm8aTTJ3K)
 
-## Dragon Mounts 3
+## Dragon Mounts: Spellbound Skies
 Dragon Mounts 3: Spellbound Skies (formerly DragonCraft) is the official third add-on in the series which takes the Dragon Mounts concept into a more magic focused theming. It includes special features that adds quality of life improvements, cut content, and different play styles compared to it's prequel Dragon Mounts 2.
 
 ## Download Links
