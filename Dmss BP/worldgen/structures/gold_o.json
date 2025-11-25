@@ -1,0 +1,43 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:jigsaw": {
+    "description": {
+      "identifier": "dmss:gold_o"
+    },
+    "start_pool": "dmss:gold_o",
+    "step": "underground_structures",
+    "heightmap_projection": "none",
+    "start_height": {
+        "type": "uniform",
+        "min": {
+          "above_bottom": 0
+        },
+        "max": {
+          "above_bottom": 96
+        }  
+    },
+    "max_depth": 1,
+    "biome_filters": [
+      {
+        "any_of": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "overworld"
+          },
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "overworld_generation"
+          }
+        ]
+      }
+    ],
+    "terrain_adaptation": "encapsulate",
+    "liquid_settings": "apply_waterlogging",
+    "dimension_padding": {
+      "top": 20,
+      "bottom": 10
+    }
+  }
+}
