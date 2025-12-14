@@ -9,7 +9,12 @@
 			"minecraft:icon": "cherry_dragon_scales",
 			"minecraft:display_name": {
 				"value": "Cherry dragon scales"
-			}
+			},
+			"minecraft:tags": {
+                "tags": [
+					"dmss:forest_dragon_scales"
+				]
+            }
 		}
 	}
 }

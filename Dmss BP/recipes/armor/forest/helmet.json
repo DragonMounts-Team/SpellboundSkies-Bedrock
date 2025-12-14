@@ -1,5 +1,5 @@
 {
-	"format_version": "1.12",
+	"format_version": "1.20",
 	"minecraft:recipe_shaped": {
 		"description": {
 			"identifier": "dmss:forest_helmet_cherry"
@@ -17,7 +17,7 @@
 			}
 		},
 		"result": {
-			"item": "dmss:forest_crown"
+			"item": "dmss:forest_dragon_crown"
 		},
     	"unlock":{"context": "AlwaysUnlocked"}
 	}

@@ -2,7 +2,7 @@
 	"format_version": "1.12",
 	"minecraft:recipe_shaped": {
 		"description": {
-			"identifier": "dmss:cherry_dragon_axe"
+			"identifier": "dmss:forest_dragon_axe_cherry"
 		},
 		"tags": [
 			"o_altar"
@@ -21,7 +21,7 @@
 			}
 		},
 		"result": {
-			"item": "dmss:cherry_dragon_axe"
+			"item": "dmss:forest_dragon_axe"
 		},
     	"unlock":{"context": "AlwaysUnlocked"}
 	}

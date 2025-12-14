@@ -4,7 +4,7 @@
     "description": {
       "identifier": "dmss:cherry_dragon_ingot"
     },
-    "tags": ["crafting_table"],
+    "tags": ["o_altar"],
     "ingredients": [
       { "item": "dmss:cherry_dragon_scales" },
       { "item": "minecraft:iron_ingot" }

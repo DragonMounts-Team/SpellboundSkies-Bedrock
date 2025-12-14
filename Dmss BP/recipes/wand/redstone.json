@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "dmss:redstone_dragon_wand"
+		},
+		"tags": [
+			"n_altar"
+		],
+		"pattern": [
+			" X",
+			"# "
+		],
+		"key": {
+			"X": {
+				"item": "dmss:redstone_spellstone"
+			},
+			"#": {
+				"item": "minecraft:stick"
+			}
+		},
+		"result": {
+			"item": "dmss:redstone_dragon_wand"
+		},
+    	"unlock":{"context": "AlwaysUnlocked"}
+	}
+}

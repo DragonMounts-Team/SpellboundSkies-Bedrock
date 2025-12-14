@@ -2,7 +2,7 @@
 	"format_version": "1.20.50",
 	"minecraft:item": {
 		"description": {
-			"identifier": "dmss:forest_pants",
+			"identifier": "dmss:forest_dragon_pants",
 			"menu_category": {
 				"category": "equipment",
 				"group": "itemGroup.name.leggings"

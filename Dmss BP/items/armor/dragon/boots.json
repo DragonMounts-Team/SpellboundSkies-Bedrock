@@ -17,7 +17,7 @@
       		},
 			"minecraft:damage_absorption": {
         		"absorbable_causes": [
-          			"wither"
+          			"contact"
         		]
       		},
 			"minecraft:durability": {

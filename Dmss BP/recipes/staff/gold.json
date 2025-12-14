@@ -1,0 +1,28 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "dmss:gold_dragon_staff"
+		},
+		"tags": [
+			"n_altar"
+		],
+		"pattern": [
+			"  X",
+			" # ",
+			"#  "
+		],
+		"key": {
+			"X": {
+				"item": "dmss:gold_spellstone"
+			},
+			"#": {
+				"item": "minecraft:stick"
+			}
+		},
+		"result": {
+			"item": "dmss:gold_dragon_staff"
+		},
+    	"unlock":{"context": "AlwaysUnlocked"}
+	}
+}

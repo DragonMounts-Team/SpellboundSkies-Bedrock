@@ -2,7 +2,7 @@
 	"format_version": "1.21.10",
 	"minecraft:item": {
 		"description": {
-			"identifier": "dmss:cherry_dragon_axe",
+			"identifier": "dmss:forest_dragon_axe",
 			"menu_category": {  
         		"group": "itemGroup.name.axe",  
         		"category": "equipment"
@@ -15,12 +15,12 @@
 			"minecraft:hand_equipped": true,
 			"minecraft:can_destroy_in_creative": true,
 			"minecraft:render_offsets": "tools",
-			"minecraft:icon":"cherry_dragon_axe",
+			"minecraft:icon":"forest_dragon_axe",
 			"minecraft:durability": {
 				"max_durability": 2678
 			},
 			"minecraft:display_name": {
-				"value": "Cherry dragon axe"
+				"value": "Forest dragon axe"
 			},
 			"minecraft:enchantable": {
 				"value": 32,

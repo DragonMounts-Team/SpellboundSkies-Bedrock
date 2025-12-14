@@ -9,7 +9,12 @@
 			"minecraft:icon": "lapis_dragon_scales",
 			"minecraft:display_name": {
 				"value": "Lapis dragon scales"
-			}
+			},
+			"minecraft:tags": {
+                "tags": [
+					"dmss:ore_dragon_scales"
+				]
+            }
 		}
 	}
 }

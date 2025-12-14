@@ -2,7 +2,7 @@
 	"format_version": "1.20.50",
 	"minecraft:item": {
 		"description": {
-			"identifier": "dmss:forest_boots",
+			"identifier": "dmss:forest_dragon_boots",
 			"menu_category": {
 				"category": "equipment",
 				"group": "itemGroup.name.boots"

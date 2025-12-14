@@ -4,7 +4,7 @@
     "description": {
       "identifier": "dmss:lapis_dragon_ingot"
     },
-    "tags": ["crafting_table"],
+    "tags": ["o_altar"],
     "ingredients": [
       { "item": "dmss:lapis_dragon_scales" },
       { "item": "minecraft:netherite_ingot" }

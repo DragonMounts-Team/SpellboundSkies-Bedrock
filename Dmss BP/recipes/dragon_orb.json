@@ -4,7 +4,7 @@
 		"description": {
 			"identifier": "dmss:dragon_orb"
 		},
-		"tags": ["altar"],
+		"tags": ["n_altar"],
 		"pattern": [
 			"OPO",
 			"PSP",
