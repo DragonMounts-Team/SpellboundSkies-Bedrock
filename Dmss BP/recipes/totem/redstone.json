@@ -1,0 +1,29 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "dmss:redstone_totem"
+		},
+		"tags": [
+			"o_altar",
+			"n_altar"
+		],
+		"pattern": [
+			"###",
+			"#X#",
+			"###"
+		],
+		"key": {
+			"X": {
+				"item": "minecraft:totem"
+			},
+			"#": {
+				"item": "minecraft:redstone_block"
+			}
+		},
+		"result": {
+			"item": "dmss:redstone_totem"
+		},
+    	"unlock":{"context": "AlwaysUnlocked"}
+	}
+}

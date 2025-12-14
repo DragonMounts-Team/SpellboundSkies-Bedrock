@@ -1,0 +1,29 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "dmss:quartz_totem"
+		},
+		"tags": [
+			"o_altar",
+			"n_altar"
+		],
+		"pattern": [
+			"###",
+			"#X#",
+			"###"
+		],
+		"key": {
+			"X": {
+				"item": "minecraft:totem"
+			},
+			"#": {
+				"item": "minecraft:quartz_block"
+			}
+		},
+		"result": {
+			"item": "dmss:quartz_totem"
+		},
+    	"unlock":{"context": "AlwaysUnlocked"}
+	}
+}

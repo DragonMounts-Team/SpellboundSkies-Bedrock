@@ -1,0 +1,28 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "dmss:redstone_dragon_pickaxe"
+		},
+		"tags": [
+			"o_altar"
+		],
+		"pattern": [
+			"XXX",
+			" # ",
+			" # "
+		],
+		"key": {
+			"X": {
+				"item": "dmss:redstone_dragon_ingot"
+			},
+			"#": {
+				"item": "minecraft:stick"
+			}
+		},
+		"result": {
+			"item": "dmss:redstone_dragon_pickaxe"
+		},
+    	"unlock":{"context": "AlwaysUnlocked"}
+	}
+}
