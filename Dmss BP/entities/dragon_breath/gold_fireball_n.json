@@ -2,7 +2,7 @@
   "format_version": "1.10.0",
   "minecraft:entity": {
     "description": {
-      "identifier": "dmss:lapis_shoot",
+      "identifier": "dmss:gold_shoot_n",
       "is_spawnable": false,
       "is_summonable": true
     },
@@ -18,7 +18,7 @@
       "minecraft:projectile": {
         "on_hit": {
           "impact_damage": {
-            "damage": 2,
+            "damage": 3,
             "knockback": true,
             "should_bounce": true
           },

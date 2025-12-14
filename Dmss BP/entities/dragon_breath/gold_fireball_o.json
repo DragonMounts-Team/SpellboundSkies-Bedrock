@@ -2,7 +2,7 @@
   "format_version": "1.10.0",
   "minecraft:entity": {
     "description": {
-      "identifier": "dmss:lapis_shoot",
+      "identifier": "dmss:gold_shoot_o",
       "is_spawnable": false,
       "is_summonable": true
     },

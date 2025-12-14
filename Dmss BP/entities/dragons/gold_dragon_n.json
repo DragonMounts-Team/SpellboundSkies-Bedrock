@@ -2,14 +2,14 @@
   "format_version": "1.21.30",
   "minecraft:entity": {
     "description": {
-      "identifier": "dmss:lapis_dragon",
+      "identifier": "dmss:gold_dragon_n",
       "is_spawnable": true,
       "is_summonable": true
     },
     "component_groups":{
       "shoot":{
         "minecraft:behavior.fire_at_target": {
-          "projectile_def": "dmss:lapis_shoot",
+          "projectile_def": "dmss:gold_shoot_n",
           "priority": 0,
           "attack_range": [0,20],
           "attack_cooldown": 0.25,
@@ -63,7 +63,7 @@
           "priority": 0,
           "duration": 1,
           "attack_time": 0.5,
-          "knockback_damage": 3,
+          "knockback_damage": 4,
           "knockback_horizontal_strength": 4,
           "knockback_vertical_strength": 4,
           "knockback_range": 4,
@@ -117,7 +117,7 @@
         "jump_prevented_value": 0.5625
       },
       "minecraft:physics": {},
-      "minecraft:loot": {"table": "loot_tables/entities/lapis_dragon.json"},
+      "minecraft:loot": {"table": "loot_tables/entities/gold_dragon.json"},
       "minecraft:fire_immune": true,
       "minecraft:nameable": {},
       "minecraft:jump.static": {},
@@ -127,7 +127,7 @@
         "priority": 7
       },
       "minecraft:attack": {
-        "damage": 4
+        "damage": 5
       },
       "minecraft:knockback_resistance": {
         "value": 70,
@@ -234,7 +234,7 @@
       },
       "minecraft:boss": {
         "hud_range": 30,
-        "name": "Lapis dragon",
+        "name": "Gold dragon",
         "should_darken_sky": true
       },
       "minecraft:behavior.hurt_by_target": {

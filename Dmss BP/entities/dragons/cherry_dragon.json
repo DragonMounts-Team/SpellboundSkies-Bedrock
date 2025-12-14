@@ -4,9 +4,26 @@
     "description": {
       "identifier": "dmss:cherry_dragon",
       "is_spawnable": true,
-      "is_summonable": true
+      "is_summonable": true,
+      "properties": {
+        "dmss:drop": {
+          "type": "bool",
+          "client_sync": true,
+          "default": false
+        }
+      }
     },
     "component_groups": {
+      "drop":{
+        "minecraft:timer": {
+          "time": 0.125,
+          "looping": false,
+          "time_down_event": {
+            "event": "reset_drop",
+            "target": "self"
+          }
+        }
+      },
       "ranged":{
         "minecraft:behavior.fire_at_target": {
           "projectile_def": "dmss:forest_shoot",
@@ -197,7 +214,8 @@
               "min_wait_time": 6000,
               "max_wait_time": 18000,
               "spawn_sound": "dmss:dragon.item_fall",
-              "spawn_item": "dmss:cherry_scale"
+              "spawn_item": "dmss:cherry_scale",
+              "spawn_item_event": {"event": "dropping","target": "self"}
             }
           ]
         },
@@ -238,7 +256,8 @@
               "min_wait_time": 6000,
               "max_wait_time": 18000,
               "spawn_sound": "dmss:dragon.item_fall",
-              "spawn_item": "dmss:cherry_scale"
+              "spawn_item": "dmss:cherry_scale",
+              "spawn_item_event": {"event": "dropping","target": "self"}
             }
           ]
         },
@@ -253,13 +272,15 @@
               "min_wait_time": 6000,
               "max_wait_time": 18000,
               "spawn_sound": "dmss:dragon.item_fall",
-              "spawn_item": "dmss:cherry_scale"
+              "spawn_item": "dmss:cherry_scale",
+              "spawn_item_event": {"event": "dropping","target": "self"}
             },
             {
               "min_wait_time": 36000,
               "max_wait_time": 72000,
               "spawn_sound": "dmss:dragon.item_fall",
-              "spawn_item": "dmss:cherry_spellstone"
+              "spawn_item": "dmss:cherry_spellstone",
+              "spawn_item_event": {"event": "dropping","target": "self"}
             }
           ]
         },
@@ -667,6 +688,14 @@
       }
     },
     "events": {
+      "dropping":{
+        "add":{"component_groups":["drop"]},
+        "set_property": {"dmss:drop": true}
+      },
+      "reset_drop":{
+        "remove":{"component_groups":["drop"]},
+        "set_property": {"dmss:drop": false}
+      },
       "ranged":{
         "remove":{"component_groups":["melee"]},
         "add":{"component_groups":["ranged"]}
