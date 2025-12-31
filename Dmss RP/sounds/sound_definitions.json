@@ -162,5 +162,14 @@
 				"volume": 1
 			}
 		]
+	},
+	"dmss:dragon.item_fall":{
+		"category":"neutral",
+		"sounds":[
+			{
+				"name": "sounds/mob/dragon/item_fall",
+				"volume": 1
+			}
+		]
 	}
 }
