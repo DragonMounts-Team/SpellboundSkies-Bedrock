@@ -58,6 +58,9 @@
 						},
 						{
 							"sit_target": "query.is_sitting && !query.has_rider && query.has_target"
+						},
+						{
+							"ride": "query.is_riding_any_entity_of_type('minecraft:player')"
 						}
 					]
 				},
@@ -79,13 +82,17 @@
 						},
 						{
 							"hover": "!query.is_on_ground && query.modified_move_speed <= 0.5 && query.has_rider"
+						},
+						{
+							"ride": "query.is_riding_any_entity_of_type('minecraft:player')"
 						}
 					]
 				},
 				"idle": {
 					"animations": [
 						"idle",
-						{ "walk": "math.min(query.modified_move_speed + 0.5, 1.5)*query.is_moving" }
+						{"walk":"math.min(query.modified_move_speed + 0.5, 1.5)*query.is_moving" },
+						{"shake":"query.property('dmss:drop')"}
 					],
 					"blend_transition": 0.75,
 					"blend_via_shortest_path": true,
@@ -98,6 +105,24 @@
 						},
 						{
 							"hover": "!query.is_on_ground && query.modified_move_speed <= 0.5 && query.has_rider"
+						},
+						{
+							"ride": "query.is_riding_any_entity_of_type('minecraft:player')"
+						}
+					]
+				},
+				"ride": {
+					"animations": [
+						"ride"
+					],
+					"blend_transition": 0.75,
+					"blend_via_shortest_path": true,
+					"transitions": [
+						{
+							"idle": "(!query.is_sitting || query.has_rider) && query.is_on_ground && !query.is_riding_any_entity_of_type('minecraft:player')"
+						},
+						{
+							"sit_target": "query.is_sitting && query.is_on_ground && !query.has_rider && !query.is_riding_any_entity_of_type('minecraft:player')"
 						}
 					]
 				}

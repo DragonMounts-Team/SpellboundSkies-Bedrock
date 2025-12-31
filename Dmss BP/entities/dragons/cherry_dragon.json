@@ -10,10 +10,33 @@
           "type": "bool",
           "client_sync": true,
           "default": false
+        },
+        "dmss:age":{
+          "type": "enum",
+          "values": ["baby", "teen", "adult"],
+          "default": "baby"
         }
       }
     },
     "component_groups": {
+      "timeout": {
+        "minecraft:timer": {
+          "time": 0.5,
+          "looping": false,
+          "time_down_event": {
+            "event": "remount",
+            "target": "self"
+          }
+        }
+      },
+      "tame_family":{
+        "minecraft:type_family": {
+          "family": [
+            "dragon",
+            "tame_dragon"
+          ]
+        }
+      },
       "drop":{
         "minecraft:timer": {
           "time": 0.125,
@@ -70,20 +93,9 @@
           "sound_event": "attack"
         }
       },
-      "transform":{
-        "minecraft:transformation": {
-          "into": "dmss:soul<cherry>",
-          "begin_transform_sound": "mob.enderdragon.death",
-          "delay": {"value": 0},
-          "drop_inventory": true,
-          "drop_equipment": true,
-          "preserve_equipment": true,
-          "keep_owner": true
-        }
-      },
       "hurt": {
         "minecraft:timer": {
-          "time": 0.0,
+          "time": 1,
           "looping": false,
           "time_down_event": {
             "event": "was_hurt",
@@ -175,18 +187,33 @@
       },
       "baby_tame":{
         "minecraft:behavior.find_mount": {
-          "priority": 4,
-          "within_radius": 16,
+          "priority": 9,
+          "within_radius": 1,
           "avoid_water": true,
           "start_delay": 100,
           "target_needed": false,
-          "mount_distance": 2
+          "mount_distance": 1
         },
         "minecraft:type_family": {
           "family": [
             "dragon",
             "parrot_tame",
             "tame_dragon"
+          ]
+        },
+        "minecraft:entity_sensor": {
+          "relative_range": true,
+          "subsensors": [
+            {
+              "range": [1.2,2],
+              "event_filters": {
+              "all_of": [
+                {"test": "is_riding"},
+                {"test": "is_family","subject": "other","value": "player"},
+                {"test": "is_sneaking","subject": "other"}
+              ]},
+              "event": "dismount"
+            }
           ]
         }
       },
@@ -214,7 +241,7 @@
               "min_wait_time": 6000,
               "max_wait_time": 18000,
               "spawn_sound": "dmss:dragon.item_fall",
-              "spawn_item": "dmss:cherry_scale",
+              "spawn_item": "dmss:cherry_dragon_scales",
               "spawn_item_event": {"event": "dropping","target": "self"}
             }
           ]
@@ -256,7 +283,7 @@
               "min_wait_time": 6000,
               "max_wait_time": 18000,
               "spawn_sound": "dmss:dragon.item_fall",
-              "spawn_item": "dmss:cherry_scale",
+              "spawn_item": "dmss:cherry_dragon_scales",
               "spawn_item_event": {"event": "dropping","target": "self"}
             }
           ]
@@ -272,7 +299,7 @@
               "min_wait_time": 6000,
               "max_wait_time": 18000,
               "spawn_sound": "dmss:dragon.item_fall",
-              "spawn_item": "dmss:cherry_scale",
+              "spawn_item": "dmss:cherry_dragon_scales",
               "spawn_item_event": {"event": "dropping","target": "self"}
             },
             {
@@ -349,12 +376,6 @@
         }
       },
       "tamed": {
-        "minecraft:type_family": {
-          "family": [
-            "dragon",
-            "tame_dragon"
-          ]
-        },
         "minecraft:on_hurt": {
           "event": "hurt",
           "target": "self"
@@ -517,8 +538,7 @@
         "damage": 3
       },
       "minecraft:knockback_resistance": {
-        "value": 70,
-        "max": 80
+        "value": 100
       },
       "minecraft:health": {
         "value": 50,
@@ -755,52 +775,65 @@
         "randomize": [
           {
             "weight": 10.0,
-            "add": {"component_groups": ["adult","wild","on_ground","gravity","attack_swicher","wild_family"]}
+            "add": {"component_groups": ["adult","wild","on_ground","gravity","attack_swicher","wild_family"]},
+            "set_property": {"dmss:age": "adult"}
           },
           {
             "weight": 1.0,
-            "add": {"component_groups": ["baby","wild","on_ground","gravity","wild_family"]}
+            "add": {"component_groups": ["baby","wild","on_ground","gravity","wild_family"]},
+            "set_property": {"dmss:age": "baby"}
           }
         ]
       },
       "teen":{
         "sequence": [
           {
-            "filters": {"test": "has_component","value": "minecraft:is_tamed"},
-            "add": {"component_groups": ["tame_family"]}
+            "queue_command": {"command": ["ride @s stop_riding"]}
           },
           {
-            "remove":{"component_groups":["baby","baby_tame"]},
-            "add":{"component_groups":["teen","melee"]}
+            "remove":{"component_groups":["baby","baby_tame","timeout"]},
+            "add":{"component_groups":["teen","melee"]},
+            "set_property": {"dmss:age": "teen"},
+            "queue_command": {"command": ["ride @s stop_riding"]}
+          },
+          {
+            "filters": {"test": "has_component","value": "minecraft:is_tamed"},
+            "add": {"component_groups": ["tame_family"]}
           }
         ]
       },
       "adult": {
         "sequence": [
           {
-            "filters": {"test": "has_component","value": "minecraft:is_tamed"},
-            "add": {"component_groups": ["rideable","tame_family"]}
+            "queue_command": {"command": ["ride @s stop_riding"]}
           },
           {
-            "remove": {"component_groups": ["teen","baby_tame","baby"]},
-            "add": {"component_groups": ["adult","attack_swicher"]}
+            "remove": {"component_groups": ["teen","baby_tame","baby","timeout"]},
+            "add": {"component_groups": ["adult","attack_swicher"]},
+            "set_property": {"dmss:age": "adult"}
+          },
+          {
+            "filters": {"test": "has_component","value": "minecraft:is_tamed"},
+            "add": {"component_groups": ["rideable","tame_family"]}
           }
         ]
       },
       "tame": {
         "sequence": [
-          {"add": {"component_groups": ["sittable"]}},
           {
-            "filters": {"test": "has_component","operator": "!=","value": "minecraft:is_baby"},
+            "remove": {"component_groups": ["wild"]},
+            "add": {"component_groups": ["tamed","sittable"]}
+          },
+          {
+            "filters":{"test": "enum_property","domain": "dmss:age","value": "teen"},
+            "add": {"component_groups": ["tame_family"]}},
+          {
+            "filters": {"test": "enum_property","domain": "dmss:age","value": "adult"},
             "add": {"component_groups": ["rideable","tame_family"]}
           },
           {
-            "filters": {"test": "has_component","operator": "==","value": "minecraft:is_baby"},
-            "add": {"component_groups": ["baby_tame","baby_family"]}
-          },
-          {
-            "remove": {"component_groups": ["wild","wild_family"]},
-            "add": {"component_groups": ["tamed"]}
+            "filters": {"test": "enum_property","domain": "dmss:age","value": "baby"},
+            "add": {"component_groups": ["baby_tame"]}
           }
         ]
       },
@@ -825,14 +858,28 @@
         "remove": {"component_groups": ["chested"]}
       },
       "baby": {
-        "add": {"component_groups": ["baby","wild","on_ground","gravity","wild_family"]},
-        "queue_command": {"command": ["scriptevent dmss:guidebook cherry_dragon"]}
+        "add": {"component_groups": ["baby","wild","on_ground","gravity"]},
+        "queue_command": {"command": ["scriptevent dmss:guidebook cherry_dragon"]},
+        "set_property": {"dmss:age": "baby"}
       },
-      "revived":{
-        "add":{"component_groups":["baby","on_ground","gravity","tame_family"]}
+      "skeleton":{"queue_command": {"command": ["scriptevent dmss:soul forest_dragon"]}},
+      "guidebook":{"queue_command": {"command": ["scriptevent dmss:guidebook cherry_dragon"]}},
+      "dismount":{
+        "sequence": [
+          {
+            "queue_command": {"command": ["ride @s stop_riding"]}
+          },
+          {
+            "remove": {"component_groups": ["baby_tame"]},
+            "add":{"component_groups":["tame_family","timeout"]},
+            "queue_command": {"command": ["ride @s stop_riding"]}
+          }
+        ]
       },
-      "skeleton":{"add":{"component_groups":["transform"]}},
-      "guidebook":{"queue_command": {"command": ["scriptevent dmss:guidebook cherry_dragon"]}}
+      "remount":{
+        "remove":{"component_groups":["tame_family","timeout"]},
+        "add":{"component_groups": ["baby_tame"]}
+      }
     }
   }
 }
